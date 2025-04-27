@@ -106,8 +106,8 @@ const Home = () => {
               </g>
             </svg>
             <div>
-              <p className="text-black mb-0">user@example.com</p>
-              <a className="text-primary mb-0" href="#" onClick={handleLogout}>
+              <p className="text-black mb-0">{userInfo?.emailId}</p>
+              <a className="text-primary mb-0" onClick={handleLogout}>
                 Logout
               </a>
             </div>
