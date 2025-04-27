@@ -1,0 +1,1 @@
+export const RESEND_EMAIL_TIME_LIMIT = 60; // Seconds
