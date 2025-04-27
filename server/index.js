@@ -23,7 +23,7 @@ const REFRESH_TOKEN_SECRET =
 const VERIFICATION_TOKEN_SECRET =
   process.env.REFRESH_TOKEN_SECRET || "verification-secret";
 
-const FRONTEND_URL = "http://localhost:3000";
+const FRONTEND_URL = "https://auth-demo-176t.onrender.com";
 
 const corsOptions = {
   origin: FRONTEND_URL, // Make sure this is your frontend's URL
@@ -88,8 +88,8 @@ const verifyAccessToken = (req, res) => {
 
     res.cookie("accessToken", newAccessToken, {
       httpOnly: true,
-      secure: false, // true in production
-      sameSite: "Strict",
+      secure: true, // true in production
+      sameSite: "None",
       maxAge: ACCESS_TOKEN_EXPIRY_MINUTES * 60 * 1000, // 15 minutes
       path: "/",
     });
@@ -135,8 +135,8 @@ app.post("/refresh-token", (req, res) => {
     const accessToken = generateAccessToken({ emailId: user.emailId });
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
-      secure: false, // Use secure cookies in production
-      // sameSite: "None", // Ensure proper SameSite policyc
+      secure: true, // Use secure cookies in production
+      sameSite: "None", // Ensure proper SameSite policyc
       maxAge: ACCESS_TOKEN_EXPIRY_MINUTES * 60 * 1000, // Set cookie to expire in 10 days (10 * 24 hours * 60 minutes * 60 seconds * 1000 milliseconds)
       path: "/",
     });
@@ -174,16 +174,16 @@ app.post("/verify-email", async (req, res) => {
       // Set the cookie for access token
       res.cookie("accessToken", accessToken, {
         httpOnly: true,
-        secure: false, // Use secure cookies in production
-        // sameSite: "None", // Ensure proper SameSite policyc
+        secure: true, // Use secure cookies in production
+        sameSite: "None", // Ensure proper SameSite policyc
         maxAge: ACCESS_TOKEN_EXPIRY_MINUTES * 60 * 1000, // Set cookie to expire in 10 days (10 * 24 hours * 60 minutes * 60 seconds * 1000 milliseconds)
         path: "/",
       });
 
       res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
-        secure: false, // Use secure cookies in production
-        // sameSite: "None", // Ensure proper SameSite policyc
+        secure: true, // Use secure cookies in production
+        sameSite: "None", // Ensure proper SameSite policyc
         maxAge: REFRESH_TOKEN_EXPIRY_DAYS * 24 * 60 * 60 * 1000, // Set cookie to expire in 10 days (10 * 24 hours * 60 minutes * 60 seconds * 1000 milliseconds)
         path: "/",
       });
@@ -469,16 +469,16 @@ app.post("/login", async (req, res) => {
 
         res.cookie("accessToken", accessToken, {
           httpOnly: true,
-          secure: false, // Use secure cookies in production
-          // sameSite: "None", // Ensure proper SameSite policyc
+          secure: true, // Use secure cookies in production
+          sameSite: "None", // Ensure proper SameSite policyc
           maxAge: ACCESS_TOKEN_EXPIRY_MINUTES * 60 * 1000, // Set cookie to expire in 10 days (10 * 24 hours * 60 minutes * 60 seconds * 1000 milliseconds)
           path: "/",
         });
 
         res.cookie("refreshToken", refreshToken, {
           httpOnly: true,
-          secure: false, // Use secure cookies in production
-          // sameSite: "None", // Ensure proper SameSite policyc
+          secure: true, // Use secure cookies in production
+          sameSite: "None", // Ensure proper SameSite policyc
           maxAge: REFRESH_TOKEN_EXPIRY_DAYS * 24 * 60 * 60 * 1000, // Set cookie to expire in 10 days (10 * 24 hours * 60 minutes * 60 seconds * 1000 milliseconds)
           path: "/",
         });

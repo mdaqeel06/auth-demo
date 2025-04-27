@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BACKEND_URL = "http://localhost:8000";
+const BACKEND_URL = "https://auth-demo-n3ex.onrender.com";
 
 const axiosInstance = axios.create({
   baseURL: BACKEND_URL, // Base URL for all API calls
